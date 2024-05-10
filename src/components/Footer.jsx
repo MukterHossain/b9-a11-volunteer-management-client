@@ -10,7 +10,7 @@ const Footer = () => {
                 <div className='flex gap-2 items-center'>
                     {/* <img className='w-auto h-7' src={logo} alt='' /> */}
                     <Link to='/' className='flex gap-2 items-center'>
-                            {/* <img className='w-auto h-7' src={logo} alt='' /> */}
+                            <img className='w-auto h-7' src={'https://i.ibb.co/cTPPCvM/help.png'} alt='' />
                             <span className=" text-3xl font-extrabold text-blue-800">TH</span>
                             <span className=" text-xl font-semibold pl-2"> Volunteers</span>
                         </Link>
@@ -68,7 +68,7 @@ const Footer = () => {
 
             <div className='flex flex-col items-center sm:flex-row sm:justify-between'>
                 <p className='text-sm text-gray-500 '>
-                    © Copyright 2021. All Rights Reserved.
+                    © Copyright 2024. All Rights Reserved.
                 </p>
             </div>
         </div>

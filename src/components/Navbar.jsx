@@ -32,7 +32,7 @@ const Navbar = () => {
                     </div>
                     <div>
                         <Link to='/' className='flex gap-2 items-center'>
-                            {/* <img className='w-auto h-7' src={logo} alt='' /> */}
+                            <img className='w-auto h-7' src={'https://i.ibb.co/cTPPCvM/help.png'} alt='' />
                             <span className=" text-3xl font-extrabold text-blue-800">TH</span>
                             <span className=" text-xl font-semibold pl-2"> Volunteers</span>
                         </Link>
@@ -71,9 +71,9 @@ const Navbar = () => {
                         user ?
                             <div className="dropdown dropdown-end">
                                 <div className="flex justify-around items-center">
-                                    <label tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                                        <div className="w-10 rounded-full">
-                                            <img title={user?.displayName || 'user name not found'} src={user?.photoURL || "https://i.ibb.co/pnNbsKQ/sundarban.jpg"} />
+                                    <label  tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                        <div title={user?.displayName || 'user name not found'} className="w-10 rounded-full">
+                                            <img referrerPolicy="no-referrer"  src={user?.photoURL || "https://i.ibb.co/pnNbsKQ/sundarban.jpg"} />
                                         </div>
                                     </label>
                                     {/* onClick={handleLogOut} */}

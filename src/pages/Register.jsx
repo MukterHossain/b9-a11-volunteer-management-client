@@ -77,7 +77,7 @@ const Register = () => {
                     <div className='flex justify-center mx-auto'>
                         <img
                             className='w-auto h-7 sm:h-8'
-                            src={'https://i.ibb.co/JsyFCjm/bandarban.jpg'}
+                            src={'https://i.ibb.co/s3kJvvy/volunteer2.jpg'}
                             alt=''
                         />
                     </div>
@@ -216,7 +216,7 @@ const Register = () => {
                 <div
                     className='hidden bg-cover bg-center lg:block lg:w-1/2'
                     style={{
-                        backgroundImage: `url(${'https://i.ibb.co/JsyFCjm/bandarban.jpg'})`,
+                        backgroundImage: `url(https://i.ibb.co/s3kJvvy/volunteer2.jpg)`,
                     }}
                 ></div>
             </div>
