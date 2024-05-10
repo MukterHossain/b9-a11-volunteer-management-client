@@ -4,8 +4,7 @@ import { AuthContext } from "../providers/AuthProvider";
 
 
 const Navbar = () => {
-    //logOut
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     const navLinks = <>
 
         <NavLink to='/' className={({ isActive }) => isActive ? 'py-1 px-3 rounded-sm  font-bold bg-green-400 text-white' : 'font-bold py-1 px-3 rounded-sm border-2 border-gray-200 '}>Home</NavLink>
@@ -77,7 +76,7 @@ const Navbar = () => {
                                         </div>
                                     </label>
                                     {/* onClick={handleLogOut} */}
-                                    <button className="btn btn-sm bg-green-500 text-white font-semibold">Log Out</button>
+                                    <button onClick={logOut} className="btn btn-sm bg-green-500 text-white font-semibold">Log Out</button>
                                 </div>
 
                             </div>
