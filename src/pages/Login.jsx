@@ -79,7 +79,7 @@ const Login = () => {
                     <div className='flex justify-center mx-auto'>
                         <img
                             className='w-auto h-7 sm:h-8'
-                            src={'https://i.ibb.co/kcKx6Ty/volunteer1.jpg'}
+                            src={'https://i.ibb.co/cTPPCvM/help.png'}
                             alt=''
                         />
                     </div>
