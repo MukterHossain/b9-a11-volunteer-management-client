@@ -1,8 +1,18 @@
 import { Link } from "react-router-dom";
 import VolunteerNeedCard from "./VolunteerNeedCard";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
-const VolunteerNeedNow = ({ volunteers }) => {
+const VolunteerNeedNow = () => {
+    const [volunteers, setVolunteers] = useState([])
+    useEffect(() =>{
+        const getData = async()=>{
+            const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/volunteers`)
+            setVolunteers(data)
+        } 
+        getData()
+    }, [])
 
     return (
         <div>

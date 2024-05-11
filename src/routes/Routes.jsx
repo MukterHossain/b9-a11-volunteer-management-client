@@ -8,6 +8,7 @@ import Register from "../pages/Register";
 import AddVolunteerPost from "../pages/AddVolunteerPost";
 import ManageMyPost from "../pages/ManageMyPost";
 import NeedVolunteer from "../pages/NeedVolunteer";
+import VolunteerNeedDetails from "../pages/VolunteerNeedDetails";
 
 
 const router = createBrowserRouter([
@@ -18,8 +19,7 @@ const router = createBrowserRouter([
     children: [
         {
             path:'/',
-            element:<Home></Home>,
-            loader: () => fetch(`${import.meta.env.VITE_API_URL}/volunteers`)
+            element:<Home></Home>
         },
         {
             path: '/login',
@@ -40,6 +40,11 @@ const router = createBrowserRouter([
         {
             path: '/manage-my-post',
             element: <ManageMyPost></ManageMyPost>
+        },
+        {
+            path: '/volunteer-details/:id',
+            element: <VolunteerNeedDetails></VolunteerNeedDetails>
+
         }
     
     ]

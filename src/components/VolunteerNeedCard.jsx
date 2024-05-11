@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 
 const VolunteerNeedCard = ({ volunteer }) => {
-    const { thumbnail, post_title, category, deadline } = volunteer;
+    const {_id, thumbnail, post_title, category, deadline } = volunteer;
 
 
 
@@ -31,7 +31,7 @@ const VolunteerNeedCard = ({ volunteer }) => {
                         {new Date(deadline).toLocaleDateString()}
                     </span>
                 </div>
-                < Link to={`/`} >
+                < Link to={`/volunteer-details/${_id}`} >
                     <button className="btn btn-success"> View Details</button>
                 </ Link>
             </div>
