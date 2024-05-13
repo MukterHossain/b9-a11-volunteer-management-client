@@ -1,48 +1,51 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa6";
-import { FaGithub } from "react-icons/fa";
+import Swal from "sweetalert2";
+import 'sweetalert2/src/sweetalert2.scss'
 
 const Login = () => {
+
     const navigate = useNavigate();
     // const location = useLocation()
     //user, loading
-    const { signIn, signInWithGoogle,githubLogin} = useContext(AuthContext);
+    const { signIn, signInWithGoogle} = useContext(AuthContext);
     // useEffect(() =>{
     //     if(user){
     //         navigate('/')
     //     }
     // }, [navigate, user])
 
-    // const from = location.state || '/' ;
+    const from = location.state || '/' ;
 
     // googleSignIn 
     const handleGoogleSignIn = async() =>{
         try{
             await signInWithGoogle()
-            toast.success('Sign in Successful')
-            navigate('/')
+            // toast.success('Sign in Successful')
+            Swal.fire({
+                icon: "success",
+                title: "Welcome",
+                text: "Successfully Login",
+              });
+            // navigate('/')
+            navigate(from, {replace:true})
         }
         catch(err){
             console.log(err)
-            toast.error(err?.message)
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Your are invalid person!",               
+              });
+            // toast.error(err?.message)
+            // toast.success('Sign in not Successful')
         }
 
     }
-    const handleGithubSignIn = async() =>{
-        try{
-            await githubLogin()
-            toast.success('Sign in Successful')
-            navigate('/')
-        }
-        catch(err){
-            console.log(err)
-            toast.error(err?.message)
-        }
-
-    }
+  
 
     // Email and password
     const handleSignIn = async e =>{
@@ -53,13 +56,24 @@ const Login = () => {
         console.log({email, password})
         try{
            const result = await signIn(email, password)
-            toast.success('Sign in Successful')
-            console.log(result)
-            // navigate(from, {replace:true})
+            // toast.success('Sign in Successful')
+            Swal.fire({
+                icon: "success",
+                title: "Welcome",
+                text: "Successfully Login",
+              });
+            console.log(result.user)
+            e.target.reset();
+            navigate(from, {replace:true})
         }
         catch(err){
             console.log(err)
-            toast.error(err?.message)
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Your are invalid person!",               
+              });
+            // toast.error(err?.message)
         }
     }
 
@@ -97,7 +111,7 @@ const Login = () => {
                             Sign in with Google
                         </span>
                     </div>
-                    <div onClick={handleGithubSignIn} className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '>
+                    {/* <div onClick={handleGithubSignIn} className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '>
                         <div className='px-4 py-2'>
                             <FaGithub></FaGithub>
                         </div>
@@ -105,7 +119,7 @@ const Login = () => {
                         <span className='w-5/6 px-4 py-3 font-bold text-center'>
                             Sign in with Github
                         </span>
-                    </div>
+                    </div> */}
 
                     <div className='flex items-center justify-between mt-4'>
                         <span className='w-1/5 border-b  lg:w-1/4'></span>

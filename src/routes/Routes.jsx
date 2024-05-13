@@ -9,6 +9,7 @@ import AddVolunteerPost from "../pages/AddVolunteerPost";
 import ManageMyPost from "../pages/ManageMyPost";
 import NeedVolunteer from "../pages/NeedVolunteer";
 import VolunteerNeedDetails from "../pages/VolunteerNeedDetails";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -34,16 +35,23 @@ const router = createBrowserRouter([
             element: <NeedVolunteer></NeedVolunteer>
         },
         {
-            path: '/add-volunteer-post',
-            element: <AddVolunteerPost></AddVolunteerPost>
+            path: '/add-volunteer',
+            element: <PrivateRoute>
+                <AddVolunteerPost></AddVolunteerPost>
+                </PrivateRoute>
         },
         {
             path: '/manage-my-post',
-            element: <ManageMyPost></ManageMyPost>
+            element: <PrivateRoute>
+                <ManageMyPost></ManageMyPost>
+            </PrivateRoute>
         },
         {
-            path: '/volunteer-details/:id',
-            element: <VolunteerNeedDetails></VolunteerNeedDetails>
+            path: '/volunteer/:id',
+            element: <PrivateRoute>
+                <VolunteerNeedDetails></VolunteerNeedDetails>
+            </PrivateRoute>,
+            loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/volunteer/${params.id}`)
 
         }
     

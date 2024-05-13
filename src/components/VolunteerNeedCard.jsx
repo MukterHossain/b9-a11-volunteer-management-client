@@ -20,7 +20,7 @@ const VolunteerNeedCard = ({ volunteer }) => {
                 </div>
                 <div className="mb-5">
                     <h1 className='mt-2 text-xl font-bold text-gray-800 '>
-                        {post_title.substr(0, 30)}
+                        {post_title?.substr(0, 30)}
                     </h1>
 
                     <h2 className=' py-1 text-xl text-blue-800 '>
@@ -31,7 +31,7 @@ const VolunteerNeedCard = ({ volunteer }) => {
                         {new Date(deadline).toLocaleDateString()}
                     </span>
                 </div>
-                < Link to={`/volunteer-details/${_id}`} >
+                < Link to={`/volunteer/${_id}`} >
                     <button className="btn btn-success"> View Details</button>
                 </ Link>
             </div>

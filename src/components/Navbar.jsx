@@ -11,7 +11,7 @@ const Navbar = () => {
         <NavLink to='/need-volunteer' className={({ isActive }) => isActive ? 'py-1 px-3 rounded-sm  font-bold bg-green-400 text-white' : 'font-bold py-1 px-3 rounded-sm border-2 border-gray-200 '}>Need Volunteer</NavLink>
         {/* {
             user && <>
-                <NavLink to='/addSpot' className={({ isActive }) => isActive ? 'py-1 px-3 rounded-sm  font-bold bg-green-400 text-white' : 'font-bold py-1 px-3 rounded-sm border-2 border-gray-200 '}>Add Tourists Spot</NavLink>
+                <NavLink to='/' className={({ isActive }) => isActive ? 'py-1 px-3 rounded-sm  font-bold bg-green-400 text-white' : 'font-bold py-1 px-3 rounded-sm border-2 border-gray-200 '}>Add Tourists Spot</NavLink>
             </>
         } */}
 
@@ -58,7 +58,7 @@ const Navbar = () => {
                         >
 
                             <li>
-                                <Link to={'/add-volunteer-post'} className='justify-between'> Add Volunteer Post</Link>
+                                <Link to={'/add-volunteer'} className='justify-between'> Add Volunteer Post</Link>
                             </li>
                             <li>
                                 <Link to={'/manage-my-post'}> Manage My Post</Link>

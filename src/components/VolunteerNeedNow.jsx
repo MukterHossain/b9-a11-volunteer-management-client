@@ -27,7 +27,7 @@ const VolunteerNeedNow = () => {
 
             </div>
             <div className="text-center my-10">
-                <Link to={'/'}>
+                <Link to={'/need-volunteer'}>
                     <button className="btn btn-success text-xl font-semiBold">See all</button>
                 </Link>
             </div>
