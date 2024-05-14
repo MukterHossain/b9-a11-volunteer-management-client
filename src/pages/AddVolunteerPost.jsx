@@ -3,8 +3,10 @@ import { AuthContext } from "../providers/AuthProvider";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
+import Swal from "sweetalert2";
+import 'sweetalert2/src/sweetalert2.scss'
 import axios from "axios";
+import {Helmet} from "react-helmet";
 
 
 const AddVolunteerPost = () => {
@@ -35,7 +37,11 @@ const AddVolunteerPost = () => {
         try{
             const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/volunteer`, volunteerData)
             // Swal.fire("Job Data Updated Successfully")
-            toast.success('Sign in Successful')
+            Swal.fire({
+                icon: "success",
+                title: "Welcome",
+                text: "Add successfully",
+              });
             navigate('/')
 
             console.log(data)
@@ -50,6 +56,9 @@ const AddVolunteerPost = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>TH Volunteers || Add Volunteer Post</title>
+            </Helmet>
             <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
                 <h2 className="text-lg font-semibold text-black capitalize dark:text-white">Add Volunteer Post</h2>
 

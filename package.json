@@ -19,6 +19,7 @@
     "react-datepicker": "^6.9.0",
     "react-dom": "^18.2.0",
     "react-head": "^3.4.2",
+    "react-helmet": "^6.1.0",
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.23.0",
     "react-tabs": "^6.0.2",

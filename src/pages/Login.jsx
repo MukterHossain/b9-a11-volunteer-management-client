@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
-// import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import 'sweetalert2/src/sweetalert2.scss'
@@ -40,8 +39,6 @@ const Login = () => {
                 title: "Error",
                 text: "Your are invalid person!",               
               });
-            // toast.error(err?.message)
-            // toast.success('Sign in not Successful')
         }
 
     }
@@ -56,7 +53,6 @@ const Login = () => {
         console.log({email, password})
         try{
            const result = await signIn(email, password)
-            // toast.success('Sign in Successful')
             Swal.fire({
                 icon: "success",
                 title: "Welcome",
@@ -73,7 +69,6 @@ const Login = () => {
                 title: "Error",
                 text: "Your are invalid person!",               
               });
-            // toast.error(err?.message)
         }
     }
 

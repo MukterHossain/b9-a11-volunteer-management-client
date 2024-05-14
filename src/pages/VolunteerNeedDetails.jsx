@@ -1,6 +1,7 @@
 // import axios from "axios";
 // import { useEffect, useState } from "react";
 
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 
 
@@ -19,6 +20,9 @@ const VolunteerNeedDetails = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>TH Volunteers || Manage My Post</title>
+            </Helmet>
             <div className="">
                 <div className='w-full max-w-sm px-4 py-3 bg-white rounded-md shadow-md hover:scale-[1.05] transition-all'>
                     <div className=''>
