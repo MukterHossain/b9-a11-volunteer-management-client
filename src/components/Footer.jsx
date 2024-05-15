@@ -8,7 +8,6 @@ const Footer = () => {
         <div className='container px-6 py-8 mx-auto'>
             <div className='flex flex-col items-center text-center'>
                 <div className='flex gap-2 items-center'>
-                    {/* <img className='w-auto h-7' src={logo} alt='' /> */}
                     <Link to='/' className='flex gap-2 items-center'>
                             <img className='w-auto h-7' src={'https://i.ibb.co/cTPPCvM/help.png'} alt='' />
                             <span className=" text-3xl font-extrabold text-blue-800">TH</span>

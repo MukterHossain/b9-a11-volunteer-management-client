@@ -1,13 +1,13 @@
-// import { Link, useLocation, useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
+
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import Swal from "sweetalert2";
+import 'sweetalert2/src/sweetalert2.scss'
 
 
 const Register = () => {
     const { createUser, user, setUser, } = useContext(AuthContext)
-    //  updateUserProfile  user, setUser,
     const [registerError, setRegisterError] = useState('')
     const [registerSuccess, setRegisterSuccess] = useState('')
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ const Register = () => {
         const name = form.name.value;
         const photo = form.photo.value;
         const password = form.password.value;
-        console.log({ email, password, name, photo })
+        // console.log({ email, password, name, photo })
 
         setRegisterError('')
         setRegisterSuccess('')
@@ -50,29 +50,23 @@ const Register = () => {
             setUser({ ...user, photoURL: photo, displayName: name })
             navigate('/')
                navigate(from, {replace:true})
-            toast.success('Sign in Successful')
+               Swal.fire({
+                icon: "success",
+                title: "Welcome",
+                text: "Register Successfully",
+              });
             setRegisterSuccess('user created successfully')
         }
         catch (err) {
             console.log(err)
-            toast.error(err?.message)
+            Swal.fire({
+                icon: "error",
+                text: "Register not Successfully",
+              });
             setRegisterError(err.message)
         }
     }
 
-    // googleSignIn 
-    // const handleGoogleSignIn = async() =>{
-    //     try{
-    //         await signInWithGoogle()
-    //         toast.success('Sign in Successful')
-    //         navigate(from, {replace:true})
-    //     }
-    //     catch(err){
-    //         console.log(err)
-    //         toast.error(err?.message)
-    //     }
-
-    // }
     return (
         <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
             <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl '>

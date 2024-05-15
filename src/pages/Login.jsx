@@ -23,13 +23,11 @@ const Login = () => {
     const handleGoogleSignIn = async() =>{
         try{
             await signInWithGoogle()
-            // toast.success('Sign in Successful')
             Swal.fire({
                 icon: "success",
                 title: "Welcome",
                 text: "Successfully Login",
               });
-            // navigate('/')
             navigate(from, {replace:true})
         }
         catch(err){
@@ -50,15 +48,16 @@ const Login = () => {
         const form  = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log({email, password})
+        // console.log({email, password})
         try{
-           const result = await signIn(email, password)
+        //    const result = await signIn(email, password)
+            await signIn(email, password)
             Swal.fire({
                 icon: "success",
                 title: "Welcome",
                 text: "Successfully Login",
               });
-            console.log(result.user)
+            // console.log(result.user)
             e.target.reset();
             navigate(from, {replace:true})
         }
@@ -106,15 +105,6 @@ const Login = () => {
                             Sign in with Google
                         </span>
                     </div>
-                    {/* <div onClick={handleGithubSignIn} className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '>
-                        <div className='px-4 py-2'>
-                            <FaGithub></FaGithub>
-                        </div>
-
-                        <span className='w-5/6 px-4 py-3 font-bold text-center'>
-                            Sign in with Github
-                        </span>
-                    </div> */}
 
                     <div className='flex items-center justify-between mt-4'>
                         <span className='w-1/5 border-b  lg:w-1/4'></span>
@@ -169,9 +159,6 @@ const Login = () => {
                             </button>
                         </div>
                     </form>
-                    {/* <div>
-                    <p className="text-center mt-5">Do not have an account ? <Link className="text-blue-600 font-bold " to='/register'>Register</Link></p>
-                </div> */}
 
                     <div className='flex items-center justify-between mt-4'>
                         <span className='w-1/5 border-b  md:w-1/4'></span>

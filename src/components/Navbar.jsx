@@ -62,7 +62,7 @@ const Navbar = () => {
                         <div
                             tabIndex={0}
                             role='button'
-                            className='font-bold text-sm text-green-400 '
+                            className='font-bold text-sm text-green-400 pr-2'
                         >
                             My Profile
                         </div>
@@ -74,11 +74,9 @@ const Navbar = () => {
 
                             <li>
                                 < NavLink to='/add-volunteer' className={({ isActive }) => isActive ? 'py-1 px-3 border-2  rounded-xl  font-bold text-green-400 border-green-400' : 'font-bold py-1 px-3 rounded-xl border-2 border-gray-200 '}>Add Volunteer Post</NavLink>
-                                {/* <Link to={'/add-volunteer'} className='justify-between'> Add Volunteer Post</Link> */}
                             </li>
                             <li>
                                 < NavLink to='/manage-my-post' className={({ isActive }) => isActive ? 'py-1 px-3 border-2  rounded-xl  font-bold text-green-400 border-green-400' : 'font-bold py-1 px-3 rounded-xl border-2 border-gray-200 '}>Manage My Post</NavLink>
-                                {/* <Link to={'/manage-my-post'}> Manage My Post</Link> */}
                             </li>
                         </ul>
                     </div>

@@ -44,7 +44,6 @@ const AddVolunteerPost = () => {
               });
             navigate('/')
 
-            console.log(data)
         }
         catch(error){
             console.log(error)
