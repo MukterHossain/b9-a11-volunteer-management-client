@@ -56,10 +56,10 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="flex justify-center items-center md:gap-4 gap-2 py-4 md:py-8">
-                    <span><FaGithub size={20}></FaGithub></span>
-                    <span><FaGoogle size={20}></FaGoogle></span>
-                    <span><FaFacebook size={20}></FaFacebook></span>
-                    <span><FaYoutube size={20}></FaYoutube></span>
+                    <span className="shadow-md hover:scale-[1.05] transition-all"><FaGithub size={20}></FaGithub></span>
+                    <span className="shadow-md hover:scale-[1.05] transition-all"><FaGoogle size={20}></FaGoogle></span>
+                    <span className="shadow-md hover:scale-[1.05] transition-all"><FaFacebook size={20}></FaFacebook></span>
+                    <span className="shadow-md hover:scale-[1.05] transition-all"><FaYoutube size={20}></FaYoutube></span>
                     
                 </div>
 
