@@ -18,8 +18,8 @@ const ErrorPage = () => {
             </p> 
             
           </div>
-          <div className="text-center mt-4">
-          <Link to={'/'} className="text-lg text-center btn btn-outline">Home</Link >
+          <div className="text-center my-4  hover:scale-[1.05] transition-all ">
+          <Link to={'/'} className="text-lg px-8 py-2 bg-blue-500 rounded-lg  text-white hover:bg-green-300 transition-colors duration-500 hover:text-green-950 border-none font-semibold text-center btn btn-outline">Home</Link >
           </div>
   
           
