@@ -10,7 +10,7 @@ const Footer = () => {
             <hr className='my-3 border-gray-200 md:my-8 ' />
                 <div className='flex flex-col md:flex-row items-center justify-evenly text-center'>
                     <div className='flex gap-2 items-center'>
-                        <Link to='/' className='flex gap-2 items-center'>
+                        <Link to='/' className='flex gap-2 items-center  hover:scale-[1.05] transition-all'>
                             <img className='w-auto h-7' src={'https://i.ibb.co/cTPPCvM/help.png'} alt='' />
                             <span className=" text-3xl font-extrabold text-blue-800">TH</span>
                             <span className=" text-xl font-semibold pl-2"> Volunteers</span>
