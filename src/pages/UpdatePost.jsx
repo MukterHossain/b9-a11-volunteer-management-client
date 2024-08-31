@@ -119,7 +119,7 @@ const UpdatePost = () => {
                     </div>
 
                     <div className="flex justify-center px-10 mt-6">
-                        <button className="px-8 py-2 text-lg bg-blue-400 rounded-lg  text-white hover:bg-green-300 transition-colors duration-500 hover:text-green-950 border-none font-semibold">Updated Post</button>
+                        <button className="px-8 py-2 text-lg bg-blue-400 rounded-lg  text-white hover:bg-green-400 transition-colors duration-500 hover:text-green-950 border-none font-semibold">Updated Post</button>
                     </div>
                 </form>
             </section>
