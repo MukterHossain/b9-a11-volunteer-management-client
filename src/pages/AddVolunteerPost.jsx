@@ -5,14 +5,16 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import 'sweetalert2/src/sweetalert2.scss'
-import axios from "axios";
 import {Helmet} from "react-helmet";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { Fade } from "react-awesome-reveal";
 
 
 const AddVolunteerPost = () => {
     const {user} = useContext(AuthContext)
     const [startDate, setStartDate] = useState(new Date());
     const navigate = useNavigate()
+    const axiosSecure = useAxiosSecure()
 
     const handleAddVolunteerPost = async e =>{
         e.preventDefault();
@@ -24,10 +26,10 @@ const AddVolunteerPost = () => {
         const location = form.location.value;
         const noVolunteer = parseFloat(form.noVolunteer.value);
         const deadline = startDate;
-        const name = form.name.value;
+        // const name = form.name.value;
         const email = form.email.value;
 
-        const volunteerData = {thumbnail, deadline, postTitle, description, category, location, noVolunteer,  name, email, 
+        const volunteerData = {thumbnail, deadline, postTitle, description, category, location, noVolunteer,   
             takeVolunteer:{
                 email,
                 name: user?.displayName
@@ -35,14 +37,13 @@ const AddVolunteerPost = () => {
         }
         console.log(volunteerData)
         try{
-            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/volunteer`, volunteerData)
-            // Swal.fire("Job Data Updated Successfully")
+            const {data} = await axiosSecure.post(`/volunteer`, volunteerData)
             Swal.fire({
                 icon: "success",
                 title: "Welcome",
                 text: "Add successfully",
               });
-            navigate('/')
+              navigate('/manage-my-post')
 
         }
         catch(error){
@@ -58,26 +59,27 @@ const AddVolunteerPost = () => {
             <Helmet>
                 <title>TH Volunteers || Add Volunteer Post</title>
             </Helmet>
-            <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
-                <h2 className="text-lg font-semibold text-black capitalize dark:text-white">Add Volunteer Post</h2>
+            <Fade direction="down" cascade={false} delay={400} triggerOnce={true}>
+            <section className="w-4/5 my-20 p-6 mx-auto text-gray-100 rounded-md shadow-xl bg-gray-500">
+                <h2 className="text-xl md:text-3xl lg:text-4xl pb-4 text-center font-bold text-gray-100 underline">Add Volunteer Post</h2>
 
                 <form onSubmit={handleAddVolunteerPost}>
                     <div className="grid grid-cols-1 gap-6 mt-4 md:grid-cols-2">
                         <div>
-                            <label className="text-gray-700 dark:text-gray-200 block w-full px-4 pb-2" >Thumbnail</label>
-                            <input id="username" name="thumbnail" type="text" className="block w-full px-4 py-2  text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
+                            <label className="text-gray-200 block w-full px-4 pb-2" >Thumbnail</label>
+                            <input id="username" name="thumbnail" type="text" className="block w-full px-4 py-2  text-gray-700 bg-white border border-gray-200 rounded-md  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
                         </div>
                         <div>
                             <label className="text-gray-700 dark:text-gray-200" >Post Title</label>
-                            <input id="username" type="text" name="postTitle" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
+                            <input id="username" type="text" name="postTitle" className="block w-full px-4 py-2 mt-2 text-gray-800 bg-white border border-gray-200 rounded-md  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
                         </div>
                         <div>
                             <label className="text-gray-700 dark:text-gray-200" >Description</label>
-                            <input id="username" type="text" name="description" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
+                            <input id="username" type="text" name="description" className="block w-full px-4 py-2 mt-2 text-gray-800 bg-white border border-gray-200 rounded-md   dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
                         </div>
                         <div>
                             <label className="text-gray-700 dark:text-gray-200" >Category</label>
-                            <label className="block w-full py-2 mt-2 text-gray-700">
+                            <label className="block w-full  mt-2  text-gray-700">
                             <select
                                 name='category'
                                 id='category'
@@ -92,38 +94,41 @@ const AddVolunteerPost = () => {
                         </div>
                         <div>
                             <label className="text-gray-700 dark:text-gray-200" >Location</label>
-                            <input id="username" type="text" name="location" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
+                            <input id="username" type="text" name="location" className="block w-full px-4 py-2 mt-2 text-gray-800 bg-white border border-gray-200 rounded-md dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
                         </div>
 
                         <div>
                             <label className="text-gray-700 dark:text-gray-200" >No. of volunteers needed
 </label>
-                            <input id="emailAddress" type="number" name="noVolunteer" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
+                            <input id="emailAddress" type="number" name="noVolunteer" className="block w-full px-4 py-2 mt-2 text-gray-800 bg-white border border-gray-200 rounded-md   dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
                         </div>
 
-                        <div className="w-full">
-                            <label className="text-gray-700 w-full dark:text-gray-200" >Deadline</label>
+                        <div className="w-full ">
+                            <label className="text-gray-700 pb-2 w-full dark:text-gray-200" >Deadline</label>
                             <br />
+                            <span className="rounded-md block w-full px-4 mt-2 text-gray-700 bg-white">
                             <DatePicker 
-                            className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                            className="block w-full px-4 py-2   bg-white  text-gray-800  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 outline-none dark:focus:border-blue-300 focus:outline-none "
                              selected={startDate} onChange={(date) => setStartDate(date)} />
+                            </span>
                         </div>
 
                         <div>
                             <label className="text-gray-700 dark:text-gray-200" > Organizer name </label>
-                            <input id="passwordConfirmation" type="text" defaultValue={user?.displayName} name="name" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
+                            <input id="passwordConfirmation" type="text" defaultValue={user?.displayName} name="name" className="block w-full px-4 py-2 mt-2 text-gray-800 bg-white border border-gray-200 rounded-md dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
                         </div>
                         <div>
                             <label className="text-gray-700 dark:text-gray-200" >Organizer email </label>
-                            <input  type="email" defaultValue={user?.email} name="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
+                            <input  type="email" defaultValue={user?.email} name="email" className="block w-full px-4 py-2 mt-2 text-gray-800 bg-white border border-gray-200 rounded-md dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
                         </div>
                     </div>
 
                     <div className="flex justify-center px-10 mt-6">
-                        <button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Add Post</button>
+                        <button className="px-8 py-2 text-lg bg-blue-400 rounded-lg  text-white hover:bg-green-300 transition-colors duration-500 hover:text-green-950 border-none font-semibold">Add Post</button>
                     </div>
                 </form>
             </section>
+            </Fade>
         </div>
     );
 };

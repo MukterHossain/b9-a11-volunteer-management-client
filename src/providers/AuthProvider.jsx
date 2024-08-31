@@ -1,7 +1,8 @@
 import { createContext,  useEffect,  useState } from 'react'
-import {  createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import {  createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from '../firebase/firebase.config';
 import { GoogleAuthProvider } from "firebase/auth";
+import axios from 'axios';
 const auth = getAuth(app);
 
 export const AuthContext = createContext(null)
@@ -29,22 +30,23 @@ const AuthProvider = ({children}) => {
 
     const logOut = async () => {
         setLoading(true)
+       const {data} =  await axios(`${import.meta.env.VITE_API_URL}/logout`, {withCredentials:true})
         return signOut(auth)
     }
 
 
-    // const updateUserProfile = (name, photo) => {
-    //     return updateProfile(auth.currentUser, {
-    //         displayName: name,
-    //         photoURL: photo,
-    //     })
-    // }
+    const updateUserProfile = (name, photo) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photo,
+        })
+    }
 
     // // onAuthStateChange
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
-            // console.log('CurrentUser-->', currentUser)
+            console.log('CurrentUser-->', currentUser)
             setLoading(false)
         })
         return () => {
@@ -61,7 +63,7 @@ const AuthProvider = ({children}) => {
         signIn,
         signInWithGoogle,
         logOut,
-        // updateUserProfile,
+        updateUserProfile,
     }
    
 

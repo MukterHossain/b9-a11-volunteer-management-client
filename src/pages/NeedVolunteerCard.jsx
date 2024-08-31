@@ -1,26 +1,24 @@
-import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
+import { Fade } from "react-awesome-reveal";
 
 
-const VolunteerNeedCard = ({ volunteer, index }) => {
-    const {_id, thumbnail, postTitle, category, deadline } = volunteer;
-
-
-
+const NeedVolunteerCard = ({needData, index}) => {
+    const {_id, thumbnail, postTitle, category, deadline } = needData;
 
 
     return (
-        <div className="">
-            <Fade direction="down" cascade={false} delay={index * 200} triggerOnce={true} > 
-            <div className='w-full  px-4 py-3 bg-white rounded-md shadow-md hover:scale-[1.05] transition-all hover:bg-slate-100'>
-                <div className='relative '>
+        <div>
+             
+             <Fade direction="down" cascade={false} delay={index * 200} triggerOnce={true} >
+            <div className='w-full max-w-sm px-4 py-3 bg-white rounded-md shadow-md hover:scale-[1.05] transition-all'>
+            <div className='relative '>
                     <span className=' '>
                         <img className="rounded-xl " src={thumbnail} alt="" />
                     </span>
                     <div className="absolute top-0 left-0 w-full h-full rounded-xl hover:bg-gray-100 duration-500  opacity-50"></div>
                 </div>
                 <div className="mb-5">
-                    <h1 className='mt-2 text-2xl font-bold text-green-800 '>
+                <h1 className='mt-2 text-2xl font-bold text-green-800 '>
                         {postTitle?.substr(0, 30)}
                     </h1>
 
@@ -37,9 +35,8 @@ const VolunteerNeedCard = ({ volunteer, index }) => {
                 </ Link>
             </div>
             </Fade>
-            
         </div>
     );
 };
 
-export default VolunteerNeedCard;
+export default NeedVolunteerCard;

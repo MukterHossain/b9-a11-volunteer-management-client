@@ -2,6 +2,8 @@
 import { Helmet } from "react-helmet";
 import Carousel from "../components/Carousel";
 import VolunteerNeedNow from "../components/VolunteerNeedNow";
+import FamousGroup from "./FamousGroup";
+import ContactPage from "./ContactPage";
 
 
 const Home = () => {
@@ -13,6 +15,8 @@ const Home = () => {
             </Helmet>
             <Carousel></Carousel>
             <VolunteerNeedNow ></VolunteerNeedNow>
+            <FamousGroup></FamousGroup>
+            <ContactPage></ContactPage>
         </div>
     );
 };

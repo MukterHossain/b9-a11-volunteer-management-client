@@ -8,9 +8,8 @@ const Navbar = () => {
     const [theme, setTheme] = useState('light');
     const navLinks = <>
 
-        < NavLink to='/' className={({ isActive }) => isActive ? 'py-1 px-3 border-2  rounded-lg   font-bold text-green-400 border-green-400' : 'font-bold py-1 px-3 rounded-lg border-2 border-gray-200 '}>Home</NavLink>
-        <NavLink to='/need-volunteer' className={({ isActive }) => isActive ? 'py-1 px-3 border-2  rounded-lg  font-bold text-green-400 border-green-400' : 'font-bold py-1 px-3 rounded-lg border-2 border-gray-200 '}>Need Volunteer</NavLink>
-        <NavLink to='/volunteer-details' className={({ isActive }) => isActive ? 'py-1 px-3 border-2  rounded-lg  font-bold text-green-400 border-green-400' : 'font-bold py-1 px-3 rounded-lg border-2 border-gray-200 '}>Volunteer Need Post Details</NavLink>
+        < NavLink to='/' className={({ isActive }) => isActive ? 'py-1 px-2    font-bold text-green-400' : 'font-bold py-1 px-2   '}>Home</NavLink>
+        <NavLink to='/need-volunteer' className={({ isActive }) => isActive ? 'py-1 px-2    font-bold text-green-400' : 'font-bold py-1 px-3 '}>Need Volunteer</NavLink>
 
     </>
 
@@ -21,13 +20,12 @@ const Navbar = () => {
     }, [theme])
     const handleToggle = (e) => {
         if (e.target.checked) {
-            setTheme('synthwave')
+            setTheme('dark')
         }
         else {
             setTheme('light')
         }
     }
-
 
 
     return (
@@ -46,8 +44,8 @@ const Navbar = () => {
                     <div>
                         <Link to='/' className='flex gap-2 items-center'>
                             <img className='w-auto h-7' src={'https://i.ibb.co/cTPPCvM/help.png'} alt='' />
-                            <span className=" text-3xl font-extrabold text-blue-800">TH</span>
-                            <span className=" text-xl font-semibold pl-2"> Volunteers</span>
+                            <span className=" md:text-3xl text-2xl font-extrabold text-blue-800">TH</span>
+                            <span className=" md:text-xl text-[14px] font-semibold  text-violet-800"> Volunteers</span>
                         </Link>
                     </div>
                 </div>
@@ -73,10 +71,13 @@ const Navbar = () => {
                         >
 
                             <li>
-                                < NavLink to='/add-volunteer' className={({ isActive }) => isActive ? 'py-1 px-3 border-2  rounded-xl  font-bold text-green-400 border-green-400' : 'font-bold py-1 px-3 rounded-xl border-2 border-gray-200 '}>Add Volunteer Post</NavLink>
+                                < NavLink to='/add-volunteer' className={({ isActive }) => isActive ? 'py-1 px-2 bg-none font-bold text-green-400' : 'font-bold py-1 px-3 '}>Add Volunteer Post</NavLink>
                             </li>
                             <li>
-                                < NavLink to='/manage-my-post' className={({ isActive }) => isActive ? 'py-1 px-3 border-2  rounded-xl  font-bold text-green-400 border-green-400' : 'font-bold py-1 px-3 rounded-xl border-2 border-gray-200 '}>Manage My Post</NavLink>
+                                < NavLink to='/myRequest' className={({ isActive }) => isActive ? 'py-1 px-2  font-bold text-green-400' : 'font-bold py-1 px-3 '}>My Volunteer Request</NavLink>
+                            </li>
+                            <li>
+                                < NavLink to='/manage-my-post' className={({ isActive }) => isActive ? 'py-1 px-2  font-bold text-green-400' : 'font-bold py-1 px-3 '}>My Need Volunteer</NavLink>
                             </li>
                         </ul>
                     </div>
