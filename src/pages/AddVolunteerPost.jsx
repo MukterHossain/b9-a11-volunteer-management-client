@@ -26,7 +26,6 @@ const AddVolunteerPost = () => {
         const location = form.location.value;
         const noVolunteer = parseFloat(form.noVolunteer.value);
         const deadline = startDate;
-        // const name = form.name.value;
         const email = form.email.value;
 
         const volunteerData = {thumbnail, deadline, postTitle, description, category, location, noVolunteer,   
@@ -35,7 +34,7 @@ const AddVolunteerPost = () => {
                 name: user?.displayName
             }
         }
-        console.log(volunteerData)
+
         try{
             const {data} = await axiosSecure.post(`/volunteer`, volunteerData)
             Swal.fire({
@@ -53,6 +52,8 @@ const AddVolunteerPost = () => {
 
         
     }
+
+    
 
     return (
         <div>

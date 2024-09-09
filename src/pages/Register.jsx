@@ -54,11 +54,10 @@ const Register = () => {
             const result = await createUser(email, password)
             await updateUserProfile(name, photo)
             setUser({ ...result?.user, photoURL: photo, displayName: name })
-            console.log(result.user)
+
             const { data } = await axiosSecure.post(`/jwt`, {
                 email: result?.user?.email,
             })
-            console.log(data)
             navigate('/')
             navigate(from, { replace: true })
             Swal.fire({
@@ -77,6 +76,7 @@ const Register = () => {
         }
     }
     if (user || loading) return
+    
     return (
         <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
             <div className='flex w-full max-w-sm mx-auto gap-4  overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl '>

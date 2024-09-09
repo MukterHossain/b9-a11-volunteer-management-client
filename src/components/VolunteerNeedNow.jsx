@@ -14,7 +14,7 @@ const VolunteerNeedNow = () => {
         } 
         getData()
     }, [axiosSecure])
-    console.log(volunteersData)
+    // console.log(volunteersData)
 
     const volunteers = volunteersData?.slice(0, 6)
 

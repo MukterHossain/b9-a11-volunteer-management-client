@@ -10,7 +10,7 @@ import { CgCloseO } from "react-icons/cg";
 
 
 const ManageMyPost = () => {
-    const { user } = useContext(AuthContext)
+    const { user} = useContext(AuthContext)
     const [myData, setMyData] = useState([])
     const axiosSecure = useAxiosSecure()
 

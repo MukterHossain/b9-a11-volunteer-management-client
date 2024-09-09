@@ -8,7 +8,7 @@ import { CgCloseO } from "react-icons/cg";
 
 
 const MyRequest = () => {
-    const { user, loading } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const [requestData, setRequestData] = useState([])
     const axiosSecure = useAxiosSecure()
 
@@ -17,10 +17,10 @@ const MyRequest = () => {
     }, [user]) 
 
     const getData = async () => {
-        const { data } = await axiosSecure(`/beVolunteer/${user?.email}`)
+        const { data } = await axiosSecure(`/beVolunteer-email/${user?.email}`)
         setRequestData(data)
     }
-    console.log(requestData)
+
 
     const handleCancel = async (id) => {
         try {
@@ -55,7 +55,6 @@ const MyRequest = () => {
         }
     }
 
-    if (loading) return <span className="loading loading-spinner loading-lg"></span>
     return (
         <div>
             <Helmet>

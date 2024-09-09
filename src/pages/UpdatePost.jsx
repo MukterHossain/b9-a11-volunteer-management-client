@@ -10,7 +10,7 @@ import { Fade } from "react-awesome-reveal";
 
 
 const UpdatePost = () => {
-    const { user } = useContext(AuthContext)
+    const { user} = useContext(AuthContext)
     const navigate = useNavigate()
     const updateData = useLoaderData()
     const axiosSecure = useAxiosSecure()
@@ -48,6 +48,7 @@ const UpdatePost = () => {
             Swal.fire(" Post not successfully Update")
         }
     }
+    
     return (
         <div>
             <Helmet>

@@ -66,7 +66,9 @@ const router = createBrowserRouter([
         },
         {
             path:'/beVolunteer/:id',
-            element: <BeVolunteer></BeVolunteer>,
+            element: <PrivateRoute>
+                <BeVolunteer></BeVolunteer>
+                </PrivateRoute>,
             loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/volunteer/${params.id}`)
            
         }

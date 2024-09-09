@@ -7,13 +7,14 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Fade } from "react-awesome-reveal";
 
 
+
 const BeVolunteer = () => {
     const beVolunteer = useLoaderData()
     const { _id, thumbnail, postTitle, description, category, location, noVolunteer, deadline,  takeVolunteer } = beVolunteer;
-    console.log(_id)
     const { user } = useContext(AuthContext)
     const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
+
 
     const handleBeVolunteer = async e => {
         e.preventDefault();
@@ -34,7 +35,6 @@ const BeVolunteer = () => {
         const volunteerData = {
             thumbnail, deadline, postTitle, description, category, location, noVolunteer,  status, suggestion, name, email,
             takeVolunteer }
-
         try {
             const { data } = await axiosSecure.post(`/beVolunteer?id=${_id}`, volunteerData)
             Swal.fire({
@@ -54,6 +54,8 @@ const BeVolunteer = () => {
         }
 
     }
+    
+    
     return (
         <div>
             <Helmet>
@@ -127,7 +129,7 @@ const BeVolunteer = () => {
                         </div>
 
                         <div className="flex justify-center px-10 mt-6">
-                            <button className="px-8 py-2 text-lg bg-blue-400 rounded-lg  text-white hover:bg-green-300 transition-colors duration-500 hover:text-green-950 border-none font-semibold">Request</button>
+                            <button type="submit" className="px-8 py-2 text-lg bg-blue-400 rounded-lg  text-white hover:bg-green-300 transition-colors duration-500 hover:text-green-950 border-none font-semibold">Request</button>
                         </div>
                     </form>
                 </section>

@@ -12,6 +12,8 @@ const Login = () => {
     const location = useLocation()
     const { signIn, signInWithGoogle, user, loading } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure()
+
+    
     useEffect(() => {
         if (user) {
             navigate('/')
@@ -24,9 +26,6 @@ const Login = () => {
     const handleGoogleSignIn = async () => {
         try {
             const result = await signInWithGoogle()
-            const { data } = await axiosSecure.post(`/jwt`, {
-                email: result?.user?.email,
-            })
             Swal.fire({
                 icon: "success",
                 title: "Welcome",
